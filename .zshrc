@@ -1,0 +1,83 @@
+#Oh My Posh
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+eval "$(oh-my-posh init zsh  --config ~/.config/ohmyposh/base.omp.json)"
+fi
+ # eval "$(oh-my-posh init zsh)"
+
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+
+source "${ZINIT_HOME}/zinit.zsh"
+# source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+# Plugin history-search-multi-word loaded with investigating.
+zinit load zdharma-continuum/history-search-multi-word
+
+# Two regular plugins loaded without investigating.
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light Aloxaf/fzf-tab
+
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+# Completion with lowercase
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z' fzf-preview 'ls --color $realpath'
+
+zinit snippet OMZP::git
+
+alias ls='ls --color'
+alias nvim='nvim'
+alias c='clear'
+
+eval "$(fzf --zsh)"
+eval "$(zoxide init --cmd cd zsh)"
+autoload -Uz compinit && compinit
+zinit cdreplay -q
+# eval "$(starship init zsh)"
+#
+#
+
+
+
+
+export NODE_PATH=`which node`
+export NVM_DIR=~/.nvm
+
+
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# pnpm
+export PNPM_HOME="/Users/doitalldev/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+PATH=~/.console-ninja/.bin:$PATH
+
+FPATH=~/.rbenv/completions:"$FPATH"
+
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+eval "$(rbenv init - zsh)"
