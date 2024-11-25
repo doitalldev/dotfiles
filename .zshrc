@@ -67,17 +67,39 @@ export NVM_DIR=~/.nvm
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# pnpm
-export PNPM_HOME="/Users/doitalldev/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
 
-PATH=~/.console-ninja/.bin:$PATH
+if command apt > /dev/null; then
+    # source $ZSH_CUSTOM/os/debian.zsh
+   echo 'Debian'
 
-FPATH=~/.rbenv/completions:"$FPATH"
+elif command systemctl > /dev/null; then
+    # source $ZSH_CUSTOM/os/systemd.zsh
+    echo 'Systemd'
 
-export PATH="/usr/local/opt/ruby/bin:$PATH"
-eval "$(rbenv init - zsh)"
+elif command freebsd-version > /dev/null; then
+    # source $ZSH_CUSTOM/os/freebsd.zsh
+    echo 'FreeBSD'
+
+elif [[ `uname` == "Darwin" ]]; then
+  echo 'Mac OS'
+    # source $ZSH_CUSTOM/os/mac.zsh
+    # pnpm
+    export PNPM_HOME="/Users/doitalldev/Library/pnpm"
+    case ":$PATH:" in
+      *":$PNPM_HOME:"*) ;;
+      *) export PATH="$PNPM_HOME:$PATH" ;;
+    esac
+    # pnpm end
+
+    PATH=~/.console-ninja/.bin:$PATH
+
+    FPATH=~/.rbenv/completions:"$FPATH"
+
+    export PATH="/usr/local/opt/ruby/bin:$PATH"
+    eval "$(rbenv init - zsh)"
+elif command kubectl > /dev/null; then
+    # source $ZSH_CUSTOM/os/kubernetes.zsh
+
+else
+    echo 'Unknown OS!'
+fi
