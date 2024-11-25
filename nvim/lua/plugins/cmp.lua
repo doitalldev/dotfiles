@@ -9,7 +9,6 @@ return {
 	},
 	"saadparwaiz1/cmp_luasnip",
 	"petertriho/cmp-git",
-	{ "MattiasMTS/cmp-dbee", opts = {}, ft = "sql" },
 	{
 		"hrsh7th/nvim-cmp",
 		opts = function(opts)
@@ -40,7 +39,6 @@ return {
 				sources = cmp.config.sources({
 					{ name = "supermaven" },
 					{ name = "nvim_lsp" },
-					{ name = "cmp-dbee" },
 					-- { name = 'vsnip' }, -- For vsnip users.
 					{ name = "luasnip" }, -- For luasnip users.
 					-- { name = 'ultisnips' }, -- For ultisnips users.
