@@ -1,6 +1,6 @@
 #Oh My Posh
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-eval "$(oh-my-posh init zsh  --config ~/.config/ohmyposh/base.omp.json)"
+eval "$(oh-my-posh init zsh  --config ~/.config/ohmyposh/nightowl.omp.json)"
 fi
  # eval "$(oh-my-posh init zsh)"
 
