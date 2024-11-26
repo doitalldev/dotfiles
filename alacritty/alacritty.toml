@@ -1,0 +1,36 @@
+# import = ["~/.config/alacritty/catppuccin-mocha.toml"]
+ # import = ["~/.config/alacritty/onelight.toml"]
+ # import = ["~/.config/alacritty/gruvbox.toml"]
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 16
+normal = { family = "Iosevka Nerd Font" }
+
+[window]
+decorations = "None"
+startup_mode = "Maximized"
+
+[terminal.shell]
+program = "/bin/zsh"
+args = ["-l"]
+
+# [colors.primary]
+# background = "#ffffff"
+
+[selection]
+save_to_clipboard = true
+
+[cursor]
+vi_mode_style = { shape = "Block", blinking = "Off" }
+
+[cursor.style]
+shape = "Block"
+blinking = "Off"
+
+[general]
+import = ["./catppuccin-latte.toml"]
+
+[terminal]

@@ -14,4 +14,4 @@ utils/java/*
 
 .DS_Store
 nvim/sessions
-tmux/plugins
+tmux/plugins/
