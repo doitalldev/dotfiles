@@ -23,11 +23,11 @@ return {
 				gitsigns = true,
 				headlines = true,
 				illuminate = true,
-				indent_blankline = {
-					enabled = true,
-					scope_color = "lavender", -- catppuccin color (eg. `lavender`) Default: text
-					colored_indent_levels = true,
-				},
+				-- indent_blankline = {
+				-- 	enabled = true,
+				-- 	scope_color = "lavender", -- catppuccin color (eg. `lavender`) Default: text
+				-- 	colored_indent_levels = true,
+				-- },
 				leap = true,
 				lsp_trouble = true,
 				mason = true,

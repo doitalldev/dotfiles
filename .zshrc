@@ -50,7 +50,8 @@ alias ls='ls --color'
 alias nvim='nvim'
 alias c='clear'
 
-eval "$(fzf --zsh)"
+# eval "$(fzf --zsh)"
+source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
 autoload -Uz compinit && compinit
 zinit cdreplay -q
