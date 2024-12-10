@@ -20,6 +20,11 @@ return {
 	end,
 	config = function()
 		require("conform").setup({
+			format_on_save = {
+				-- These options will be passed to conform.format()
+				timeout_ms = 500,
+				lsp_format = "fallback",
+			},
 			-- Define your formatters
 			formatters_by_ft = {
 				javascript = { "prettierd", "prettier", stop_after_first = true },
@@ -28,7 +33,7 @@ return {
 				typescriptreact = { "prettierd", "prettier", stop_after_first = true },
 				liquid = { "prettierd", "prettier", stop_after_first = true },
 				lua = { "stylua" },
-        css = { "prettierd", "prettier", stop_after_first = true },
+				css = { "prettierd", "prettier", stop_after_first = true },
 				-- Use the "*" filetype to run formatters on all filetypes.
 				["*"] = { "codespell" },
 				-- Use the "_" filetype to run formatters on filetypes that don't
