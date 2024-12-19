@@ -1,25 +1,25 @@
 return {
 	"nvim-telescope/telescope.nvim",
 	tag = "0.1.8",
-	dependencies = { "nvim-lua/plenary.nvim" },
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		"nvim-telescope/telescope-undo.nvim",
+		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+	},
 	opts = function()
-		defaults = {
-			layout_config = {
-				vertical = { width = 0.5 },
-				-- other layout configuration here
-			},
-		}
 		require("telescope").setup({
-			-- the rest of your telescope config goes here
+			defaults = {
+				layout_strategy = "bottom_pane",
+			},
 			extensions = {
-				undo = {
-					-- telescope-undo.nvim config, see below
-				},
+				fzf = {},
+				undo = {},
 				-- other extensions:
 				-- file_browser = { ... }
 			},
 		})
+		require("telescope").load_extension("fzf")
 		require("telescope").load_extension("undo")
-		 vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
+		vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
 	end,
 }

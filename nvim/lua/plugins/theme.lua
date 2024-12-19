@@ -47,7 +47,17 @@ return {
 				neotree = true,
 				noice = true,
 				notify = true,
-				nvimtree = true,
+				nvimtree = {
+					enabled = true,
+					show_root = true,
+					respect_buf_cwd = true,
+					library = {
+						enabled = true,
+						show_on_dirs = true,
+						show_on_open_dirs = true,
+						exclude = {},
+					},
+				},
 				semantic_tokens = true,
 				telescope = true,
 				treesitter = true,
@@ -75,10 +85,10 @@ return {
 				},
 			},
 			custom_highlights = {
-        -- light mode
+				-- light mode
 				Visual = { bg = "#FFd801", style = { "bold" } }, -- light mode
 				CursorColumn = { bg = "#e6e6e6" },
-        CursorLine = { bg = "#e6e6e6" }, -- light mode
+				CursorLine = { bg = "#e6e6e6" }, -- light mode
 				NvimTreeNormalFloat = { fg = "#000000", bg = "#ffffff" },
 				-- Visual = { bg = "#FFd801", style = { "bold" } }, -- light mode
 				-- CursorColumn = { bg = "#000000" },

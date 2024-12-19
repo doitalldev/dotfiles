@@ -13,18 +13,19 @@ local options = {
 		update_root = false,
 	},
 	view = {
-		adaptive_size = false,
+		adaptive_size = true,
 		side = "right",
-		width = 30,
+		-- width = 30,
 		preserve_window_proportions = true,
 		signcolumn = "yes",
 		float = {
-			enable = true,
+			enable = false,
 		},
+		cursorline = true,
 	},
 	git = {
 		enable = true,
-		ignore = false,
+		ignore = true,
 	},
 	filesystem_watchers = {
 		enable = true,
@@ -35,12 +36,24 @@ local options = {
 		},
 	},
 	renderer = {
-		root_folder_label = false,
-		highlight_git = false,
+		root_folder_label = ":~:s?$?/..?",
+		highlight_git = "all",
+		highlight_diagnostics = "all",
 		highlight_opened_files = "all",
+		highlight_modified = "all",
+		symlink_destination = true,
 
+		indent_width = 1,
 		indent_markers = {
 			enable = true,
+			inline_arrows = true,
+			icons = {
+				corner = "└",
+				edge = "│",
+				item = "│",
+				bottom = "─",
+				none = " ",
+			},
 		},
 
 		icons = {
@@ -48,9 +61,12 @@ local options = {
 				file = true,
 				folder = true,
 				folder_arrow = true,
-				git = false,
+				git = true,
+				modified = true,
+				hidden = false,
+				diagnostics = true,
+				bookmarks = true,
 			},
-
 			glyphs = {
 				default = "󰈚",
 				symlink = "",
